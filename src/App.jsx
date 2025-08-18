@@ -24,13 +24,19 @@ function App() {
 
       return{
         ...prevState,
-        selectedProjectId: undefined,
         tasks: [...prevState.tasks, newTask]
       }
     })
   }
 
-  function handleDeleteTask(){}
+  function handleDeleteTask(id){
+    setProjectsState(prevState => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.taskId !== id)
+      }
+    })
+  }
 
   function handleSelectProject(projectId){
     setProjectsState(prevState => {
